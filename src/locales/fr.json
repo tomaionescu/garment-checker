@@ -77,10 +77,9 @@
     "environment": {
       "title": "Coût environnemental",
       "points": "{{value}} points d’impact",
-      "basis": "Modélisé par Ecobalyse pour un vêtement type de {{mass}} g. Plus le score est bas, mieux c’est.",
+      "basis": "Modélisé par Ecobalyse (v7.0.0) pour un vêtement type de {{mass}} g. Plus le score est bas, mieux c’est.",
       "country_default": "Ecobalyse ne modélise pas ce pays : sa valeur par défaut (majorante) est utilisée pour la confection.",
       "open": "Ouvrir la simulation complète",
-      "no_token": "Ecobalyse n’est pas encore connecté.",
       "unsupported_garment": "Ecobalyse ne modélise pas ce type de vêtement.",
       "unsupported_fibre": "L’une de ces fibres n’est pas dans la base Ecobalyse.",
       "no_composition": "Une composition complète est nécessaire pour modéliser ce vêtement.",

@@ -67,9 +67,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
         return response.status(500).json({ error: "internal" });
     }
 
-    // Each source reports "no_token" until its token is configured.
     const [environment, factories] = await Promise.all([
-        environmentalCost(label, process.env.ECOBALYSE_TOKEN),
+        environmentalCost(label),
         knownFactories(label, process.env.OPEN_SUPPLY_HUB_TOKEN),
     ]);
     const labour = label.madeIn ? {

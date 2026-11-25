@@ -1,31 +1,34 @@
 import type { Label } from "./label.js";
 
-// Live reference sources. Each one needs its own API token and returns
-// { status: "unavailable", reason } instead of throwing, so a missing token or
-// an outage never fails the whole analysis.
+// Live reference sources. Each returns { status: "unavailable", reason }
+// instead of throwing, so a missing token or an outage never fails the whole analysis.
 
 export type Unavailable = { status: "unavailable"; reason: string };
 
 // ---------------------------------------------------------------- Ecobalyse
-// French government life-cycle model for textiles.
-// API reference: https://ecobalyse.beta.gouv.fr/api
+// French government life-cycle model for textiles. The current API needs an
+// account token, but the released v7.0.0 (July 2025) is still hosted and returns
+// the aggregate environmental cost without one, so that release is used here.
+// API reference: https://ecobalyse.beta.gouv.fr/versions/v7.0.0/#/api
+
+const ECOBALYSE = "https://ecobalyse.beta.gouv.fr/versions/v7.0.0/api/textile/simulator";
 
 const ECOBALYSE_MATERIAL_IDS: Record<string, string> = {
-    "cotton": "62a4d6fb-3276-4ba5-93a3-889ecd3bff84",
-    "organic-cotton": "a1c1c2ec-33b1-49d6-bf8e-139e2eb7f097",
+    "cotton": "ei-coton",
+    "organic-cotton": "ei-coton-organic",
     // Ecobalyse splits recycled cotton by waste source; labels do not, so use post-consumer.
-    "recycled-cotton": "457e9b0d-9eda-4dca-b199-deeb0a154fa9",
-    "polyester": "9dba0e95-0c35-4f8b-9267-62ddf47d4984",
-    "recycled-polyester": "8f44c680-1263-4588-b79b-a9e4dc3d8de4",
-    "elastane": "9973088b-c929-4cc5-894a-1e4d28c161d4",
-    "nylon": "c84280ff-e921-4d5c-92d6-51030bf4f74e",
-    "acrylic": "49a0bec0-f9f3-42db-a514-a9dcf06a8969",
-    "viscose": "c087d394-5901-4b03-ba7a-7d4b0db0490c",
-    "linen": "a52e486c-b67e-40af-8337-e8143cbf9076",
-    "hemp": "0c1a4654-b030-4fe1-86b7-d96ce0b85bb8",
-    "jute": "a09b2677-2900-4417-a202-e5f9a1abcce1",
-    "wool": "1fc3e17d-5661-429d-a150-7986eae16d9d",
-    "polypropylene": "73ef624d-250e-4a9a-af5d-43505b21b527",
+    "recycled-cotton": "coton-rdpc",
+    "polyester": "ei-pet",
+    "recycled-polyester": "ei-pet-r",
+    "elastane": "elasthane",
+    "nylon": "ei-pa",
+    "acrylic": "ei-acrylique",
+    "viscose": "ei-viscose",
+    "linen": "ei-lin",
+    "hemp": "ei-chanvre",
+    "jute": "ei-jute-kenaf",
+    "wool": "ei-laine-par-defaut",
+    "polypropylene": "ei-pp",
 };
 
 // Finished-garment masses (kg) from Ecobalyse's own default examples. A label
@@ -37,10 +40,7 @@ const TYPICAL_MASS_KG: Record<string, number> = {
 
 // Countries Ecobalyse models individually. For any other country the making
 // step is left out of the query and Ecobalyse applies its default (worst case).
-const ECOBALYSE_COUNTRIES = new Set([
-    "MM", "BD", "BR", "CN", "DE", "ES", "FR", "IN", "IT", "KE", "KH", "MA",
-    "NL", "NZ", "PE", "PK", "PL", "PT", "TN", "TR", "US", "VN",
-]);
+const ECOBALYSE_COUNTRIES = new Set(["MM", "BD", "CN", "FR", "IN", "KH", "MA", "PK", "TN", "TR", "VN"]);
 
 export type Environment = Unavailable | {
     status: "ok";
@@ -79,14 +79,13 @@ export function ecobalyseQuery(label: Label): { query: object; massKg: number; c
     };
 }
 
-export async function environmentalCost(label: Label, token: string | undefined): Promise<Environment> {
-    if (!token) return { status: "unavailable", reason: "no_token" };
+export async function environmentalCost(label: Label): Promise<Environment> {
     const built = ecobalyseQuery(label);
     if ("status" in built) return built;
     try {
-        const res = await fetch("https://ecobalyse.beta.gouv.fr/api/textile/simulator", {
+        const res = await fetch(ECOBALYSE, {
             method: "POST",
-            headers: { "content-type": "application/json", "token": token },
+            headers: { "content-type": "application/json" },
             body: JSON.stringify(built.query),
             signal: AbortSignal.timeout(20_000),
         });

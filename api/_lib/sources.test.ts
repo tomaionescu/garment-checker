@@ -35,8 +35,8 @@ test("ecobalyse query: merges duplicate fibres and only sends modelled countries
         mass: 0.15,
         product: "tshirt",
         materials: [
-            { id: "62a4d6fb-3276-4ba5-93a3-889ecd3bff84", share: 0.95 },
-            { id: "9973088b-c929-4cc5-894a-1e4d28c161d4", share: 0.05 },
+            { id: "ei-coton", share: 0.95 },
+            { id: "elasthane", share: 0.05 },
         ],
     });
     const modelled = ecobalyseQuery(label({}));

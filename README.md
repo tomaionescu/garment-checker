@@ -35,11 +35,10 @@ npm install
 npm run dev
 ```
 
-The function reads its keys from environment variables. Only the first is required; without the other two, that section of the result reads "not connected yet".
+The function reads its keys from environment variables. Only the first is required; without the second, the factories section reads "not connected yet". Ecobalyse needs no key: the app uses its hosted v7.0.0 release, which answers without one.
 
 ```bash
 npx vercel env add ANTHROPIC_API_KEY production       # console.anthropic.com
-npx vercel env add ECOBALYSE_TOKEN production         # free account at ecobalyse.beta.gouv.fr
 npx vercel env add OPEN_SUPPLY_HUB_TOKEN production   # opensupplyhub.org, Settings
 ```
 
@@ -62,5 +61,5 @@ covers the parts that decide what the user is told: which labour-list rows apply
 
 - The environmental cost is for a typical garment of that type (a 150 g T-shirt, a 450 g pair of jeans), because a label does not state the weight. Only the making country is known from a label; Ecobalyse fills in its defaults for spinning, weaving and dyeing.
 - The labour list is about countries and goods. A listed country does not mean this factory or brand is involved.
-- Ecobalyse covers 14 fibres and 11 garment types. Silk, cashmere, shoes and accessories are not modelled.
+- Ecobalyse (v7.0.0, July 2025) covers 14 fibres, 11 garment types and 11 making countries; any other country gets its worst-case default. Silk, cashmere, shoes and accessories are not modelled.
 - The Department of Labor list is published every two years. Update `api/_lib/dol.ts` when a new edition comes out.

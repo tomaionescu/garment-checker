@@ -77,10 +77,9 @@
     "environment": {
       "title": "Environmental cost",
       "points": "{{value}} impact points",
-      "basis": "Modelled by Ecobalyse for a typical {{mass}} g garment of this type. Lower is better.",
+      "basis": "Modelled by Ecobalyse (v7.0.0) for a typical {{mass}} g garment of this type. Lower is better.",
       "country_default": "Ecobalyse does not model this country, so its default (worst case) was used for the making step.",
       "open": "Open the full simulation",
-      "no_token": "Ecobalyse is not connected yet.",
       "unsupported_garment": "Ecobalyse does not model this type of garment.",
       "unsupported_fibre": "One of these fibres is not in the Ecobalyse database.",
       "no_composition": "A full composition is needed to model this garment.",
