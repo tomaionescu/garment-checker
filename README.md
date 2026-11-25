@@ -12,6 +12,8 @@ Claude only *reads* the label (fibres, country, brand, care symbols, registratio
 
 When a source cannot answer (the fibre is not in its database, the brand has published no factory list, the label has no country), the app says so instead of guessing.
 
+Started in 2024 as a small Python prototype; rebuilt in 2026 into the app in this repository.
+
 ## How it works
 
 ```
