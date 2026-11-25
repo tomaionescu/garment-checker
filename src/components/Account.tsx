@@ -6,9 +6,13 @@ import { inputClass, useErrorMessage } from './AuthForm'
 import { UserIcon } from './icons'
 
 export function Avatar({ url, className }: { url: string | null; className: string }) {
+  // Older accounts point at a photo host that no longer exists; fall back to the icon.
+  const [broken, setBroken] = useState(false)
   return (
     <span className={`grid shrink-0 place-items-center overflow-hidden rounded-full border border-mist/50 bg-ink ${className}`}>
-      {url ? <img src={url} alt="" className="h-full w-full object-cover" /> : <UserIcon className="h-1/2 w-1/2 text-mist" />}
+      {url && !broken
+        ? <img src={url} alt="" onError={() => setBroken(true)} className="h-full w-full object-cover" />
+        : <UserIcon className="h-1/2 w-1/2 text-mist" />}
     </span>
   )
 }
