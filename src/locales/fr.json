@@ -101,11 +101,13 @@
       "found_one": "{{brand}} a déclaré {{count}} usine en {{country}} sur Open Supply Hub.",
       "found_other": "{{brand}} a déclaré {{count}} usines en {{country}} sur Open Supply Hub.",
       "none": "{{brand}} figure sur Open Supply Hub mais n’a déclaré aucune usine en {{country}}.",
-      "no_token": "Open Supply Hub n’est pas encore connecté.",
+      "no_token": "Open Supply Hub recense les usines déclarées par les marques, mais nécessite le pays d’origine, absent de l’étiquette.",
       "no_brand": "Nécessite la marque, absente de l’étiquette.",
       "no_country": "Nécessite le pays d’origine, absent de l’étiquette.",
       "brand_not_listed": "Cette marque n’a pas publié de liste d’usines sur Open Supply Hub.",
-      "error": "Open Supply Hub est injoignable. Réessayez plus tard."
+      "error": "Open Supply Hub est injoignable. Réessayez plus tard.",
+      "manual": "Open Supply Hub recense les usines déclarées par les marques. Choisissez la marque sous « Data Contributor » sur sa carte.",
+      "open_map": "Ouvrir la carte des usines : {{country}}"
     },
     "care": {
       "title": "Entretien",

@@ -133,6 +133,19 @@ export default function ResultTag({ analysis }: { analysis: Analysis }) {
                   ))}
                 </ul>
               </>
+            ) : factories?.reason === 'no_token' && label.madeIn ? (
+              // Open Supply Hub charges for API lookups; its public map is free to search by hand.
+              <>
+                <p className={note}>{t('result.factories.manual', { country })}</p>
+                <a
+                  href={`https://opensupplyhub.org/facilities?countries=${label.madeIn}&sectors=Apparel`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-sm underline underline-offset-4"
+                >
+                  {t('result.factories.open_map', { country })}
+                </a>
+              </>
             ) : (
               <p className={note}>{t(`result.factories.${factories?.reason ?? 'error'}`)}</p>
             )}

@@ -35,11 +35,11 @@ npm install
 npm run dev
 ```
 
-The function reads its keys from environment variables. Only the first is required; without the second, the factories section reads "not connected yet". Ecobalyse needs no key: the app uses its hosted v7.0.0 release, which answers without one.
+The function reads its keys from environment variables. Only the first is required; the Open Supply Hub API is a paid plan, so without its token the factories section links to Open Supply Hub's free public map for the country on the tag instead. Ecobalyse needs no key: the app uses its hosted v7.0.0 release, which answers without one.
 
 ```bash
 npx vercel env add ANTHROPIC_API_KEY production       # console.anthropic.com
-npx vercel env add OPEN_SUPPLY_HUB_TOKEN production   # opensupplyhub.org, Settings
+npx vercel env add OPEN_SUPPLY_HUB_TOKEN production   # paid API plan, optional
 ```
 
 Deploy:

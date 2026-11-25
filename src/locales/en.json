@@ -101,11 +101,13 @@
       "found_one": "{{brand}} has disclosed {{count}} factory in {{country}} on Open Supply Hub.",
       "found_other": "{{brand}} has disclosed {{count}} factories in {{country}} on Open Supply Hub.",
       "none": "{{brand}} is on Open Supply Hub but has disclosed no factory in {{country}}.",
-      "no_token": "Open Supply Hub is not connected yet.",
+      "no_token": "Open Supply Hub lists the factories brands have disclosed, but it needs the country of origin, which is not on the label.",
       "no_brand": "Needs the brand, which is not on the label.",
       "no_country": "Needs the country of origin, which is not on the label.",
       "brand_not_listed": "This brand has not published a factory list on Open Supply Hub.",
-      "error": "Open Supply Hub could not be reached. Scan again later."
+      "error": "Open Supply Hub could not be reached. Scan again later.",
+      "manual": "Open Supply Hub lists the factories brands have disclosed. Pick the brand under “Data Contributor” on its map.",
+      "open_map": "Open the factory map for {{country}}"
     },
     "care": {
       "title": "Care",
