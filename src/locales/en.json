@@ -1,0 +1,137 @@
+{
+  "app_title": "Garment Checker",
+  "tagline": "Photograph the care label. We read it, then check it against public records.",
+  "loading": "Loading…",
+  "upload": {
+    "drop": "Drop photos of the label here",
+    "hint": "Up to {{max}} photos. Add the garment itself if you like.",
+    "choose": "Choose photos",
+    "add": "Add another",
+    "clear": "Clear",
+    "remove": "Remove photo {{n}}",
+    "analyze": "Check this garment",
+    "new": "Check another garment"
+  },
+  "progress": {
+    "reading": "Reading the label and checking the records…"
+  },
+  "errors": {
+    "generic": "Something went wrong. Check your connection and try again.",
+    "auth/invalid-credential": "Wrong email or password.",
+    "auth/email-already-in-use": "An account already exists for that email. Sign in instead.",
+    "auth/weak-password": "Choose a password of at least 6 characters.",
+    "auth/too-many-requests": "Too many attempts. Wait a few minutes and try again.",
+    "auth/requires-recent-login": "For security, sign out and back in before changing your password.",
+    "password_mismatch": "The two passwords do not match.",
+    "delete": "That scan could not be deleted. Try again.",
+    "api/invalid-argument": "Those photos could not be used. Send up to 4 JPEG, PNG or WebP images of at most 8 MB each.",
+    "api/unauthenticated": "Your session ended. Sign in again.",
+    "api/internal": "The label could not be read. Try again in a moment."
+  },
+  "auth": {
+    "sign_in": "Sign in",
+    "sign_in_sub": "Your scans are saved to your account.",
+    "signing_in": "Signing in…",
+    "sign_up": "Create account",
+    "sign_up_sub": "Keep a history of every garment you check.",
+    "signing_up": "Creating account…",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "no_account": "No account yet?",
+    "have_account": "Already have an account?"
+  },
+  "account": {
+    "title": "Account",
+    "open": "Open account",
+    "change_password": "Change password",
+    "new_password": "New password",
+    "save": "Save",
+    "cancel": "Cancel",
+    "password_updated": "Password updated.",
+    "logout": "Sign out",
+    "close": "Close"
+  },
+  "history": {
+    "title": "History",
+    "empty": "Garments you check will be listed here.",
+    "delete": "Delete this scan",
+    "delete_confirm": "Delete this scan and its photos? This cannot be undone.",
+    "untitled": "Garment",
+    "legacy": "Earlier scan"
+  },
+  "result": {
+    "unreadable": "No label could be read in these photos. Take a sharper, closer photo of the composition label and try again.",
+    "legacy": "This scan was made before results came from reference sources. Scan the label again for a checked result.",
+    "composition": "Composition",
+    "no_composition": "Not readable on the label",
+    "origin": "Made in",
+    "origin_unknown": "Not stated on the label",
+    "identifiers": "Registered",
+    "certifications": "Certifications",
+    "photo": "Photo {{n}} of {{total}}",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "environment": {
+      "title": "Environmental cost",
+      "points": "{{value}} impact points",
+      "basis": "Modelled by Ecobalyse for a typical {{mass}} g garment of this type. Lower is better.",
+      "country_default": "Ecobalyse does not model this country, so its default (worst case) was used for the making step.",
+      "open": "Open the full simulation",
+      "no_token": "Ecobalyse is not connected yet.",
+      "unsupported_garment": "Ecobalyse does not model this type of garment.",
+      "unsupported_fibre": "One of these fibres is not in the Ecobalyse database.",
+      "no_composition": "A full composition is needed to model this garment.",
+      "error": "Ecobalyse could not be reached. Scan again later."
+    },
+    "labour": {
+      "title": "Labour record",
+      "listed": "Listed by the US Department of Labor ({{edition}}) for {{country}}:",
+      "child": "child labour",
+      "forced": "forced labour",
+      "clear": "No garment or textile entries for {{country}} on the US Department of Labor list ({{edition}}).",
+      "caveat": "The list covers countries and goods, not this factory or brand.",
+      "unknown": "Needs the country of origin, which is not on the label."
+    },
+    "factories": {
+      "title": "Known factories",
+      "found_one": "{{brand}} has disclosed {{count}} factory in {{country}} on Open Supply Hub.",
+      "found_other": "{{brand}} has disclosed {{count}} factories in {{country}} on Open Supply Hub.",
+      "none": "{{brand}} is on Open Supply Hub but has disclosed no factory in {{country}}.",
+      "no_token": "Open Supply Hub is not connected yet.",
+      "no_brand": "Needs the brand, which is not on the label.",
+      "no_country": "Needs the country of origin, which is not on the label.",
+      "brand_not_listed": "This brand has not published a factory list on Open Supply Hub.",
+      "error": "Open Supply Hub could not be reached. Scan again later."
+    },
+    "care": {
+      "title": "Care",
+      "none": "No care instructions readable",
+      "wash": "Machine wash, {{temp}} °C max",
+      "hand_wash": "Hand wash only",
+      "tumbleDry_yes": "Tumble dry",
+      "tumbleDry_no": "Do not tumble dry",
+      "iron_yes": "Iron",
+      "iron_no": "Do not iron",
+      "bleach_yes": "Bleach allowed",
+      "bleach_no": "Do not bleach",
+      "dryClean_yes": "Dry clean",
+      "dryClean_no": "Do not dry clean"
+    }
+  },
+  "garment": {
+    "tshirt": "T-shirt",
+    "chemise": "Shirt",
+    "pull": "Jumper",
+    "jean": "Jeans",
+    "pantalon": "Trousers",
+    "jupe": "Skirt or dress",
+    "manteau": "Coat or jacket",
+    "chaussettes": "Socks",
+    "calecon": "Boxer shorts",
+    "slip": "Underwear",
+    "maillot-de-bain": "Swimwear"
+  }
+}
