@@ -31,7 +31,7 @@ export interface Label {
     };
 }
 
-const nullable = (type: string, extra: object = {}) => ({ type: [type, "null"], ...extra });
+const nullable = (type: string, extra: object = {}) => ({ anyOf: [{ type, ...extra }, { type: "null" }] });
 
 const SCHEMA = {
     type: "object",
@@ -39,7 +39,7 @@ const SCHEMA = {
     required: ["readable", "garmentType", "brand", "madeIn", "fibres", "rn", "ca", "certifications", "care"],
     properties: {
         readable: { type: "boolean" },
-        garmentType: nullable("string", { enum: [...GARMENT_TYPES, null] }),
+        garmentType: nullable("string", { enum: [...GARMENT_TYPES] }),
         brand: nullable("string"),
         madeIn: nullable("string"),
         fibres: {
@@ -51,7 +51,7 @@ const SCHEMA = {
                 properties: {
                     name: { type: "string" },
                     share: { type: "number" },
-                    material: nullable("string", { enum: [...MATERIALS, null] }),
+                    material: nullable("string", { enum: [...MATERIALS] }),
                 },
             },
         },
