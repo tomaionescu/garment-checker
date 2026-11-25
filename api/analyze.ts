@@ -1,10 +1,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { createRemoteJWKSet, jwtVerify } from "jose";
-import { IMAGE_TYPES, readLabel } from "./_lib/label.js";
+import { GARMENT_TYPES, IMAGE_TYPES, readLabel } from "./_lib/label.js";
 import { DOL_EDITION, labourEntries } from "./_lib/dol.js";
 import { environmentalCost, knownFactories } from "./_lib/sources.js";
 
-// POST /api/analyze  { images: [{ contentType, data (base64) }] }
+// POST /api/analyze  { images: [{ contentType, data (base64) }], garmentType? }
 // Reads the label in the photos and checks it against the reference sources.
 // The caller must send a Firebase ID token; saving the result is up to the client.
 
@@ -66,6 +66,10 @@ export default async function handler(request: VercelRequest, response: VercelRe
         console.error("Label reading failed", error);
         return response.status(500).json({ error: "internal" });
     }
+
+    // A photo of the tag alone rarely shows what the garment is, so the user can say.
+    const stated = GARMENT_TYPES.find((type) => type === request.body?.garmentType);
+    if (stated) label.garmentType = stated;
 
     const [environment, factories] = await Promise.all([
         environmentalCost(label),

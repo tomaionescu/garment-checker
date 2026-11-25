@@ -10,7 +10,9 @@
     "clear": "Effacer",
     "remove": "Retirer la photo {{n}}",
     "analyze": "Vérifier ce vêtement",
-    "new": "Vérifier un autre vêtement"
+    "new": "Vérifier un autre vêtement",
+    "type": "De quoi s’agit-il ?",
+    "type_auto": "Déduire de la photo"
   },
   "progress": {
     "reading": "Lecture de l’étiquette et consultation des registres…"
@@ -80,7 +82,7 @@
       "basis": "Modélisé par Ecobalyse (v7.0.0) pour un vêtement type de {{mass}} g. Plus le score est bas, mieux c’est.",
       "country_default": "Ecobalyse ne modélise pas ce pays : sa valeur par défaut (majorante) est utilisée pour la confection.",
       "open": "Ouvrir la simulation complète",
-      "unsupported_garment": "Ecobalyse ne modélise pas ce type de vêtement.",
+      "unsupported_garment": "Ecobalyse doit savoir de quel type de vêtement il s’agit. Choisissez-le sous les photos et relancez la vérification.",
       "unsupported_fibre": "L’une de ces fibres n’est pas dans la base Ecobalyse.",
       "no_composition": "Une composition complète est nécessaire pour modéliser ce vêtement.",
       "error": "Ecobalyse est injoignable. Réessayez plus tard."

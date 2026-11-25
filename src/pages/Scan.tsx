@@ -13,6 +13,7 @@ import ResultTag from '../components/ResultTag'
 import { CloseIcon, HistoryIcon, TrashIcon, UploadIcon } from '../components/icons'
 
 const MAX_PHOTOS = 4
+const GARMENT_TYPES = ['tshirt', 'chemise', 'pull', 'jean', 'pantalon', 'jupe', 'manteau', 'chaussettes', 'calecon', 'slip', 'maillot-de-bain']
 
 function HistoryItem({ item, onOpen, onDelete }: { item: Analysis; onOpen: () => void; onDelete: () => void }) {
   const { t, i18n } = useTranslation()
@@ -44,6 +45,7 @@ export default function Scan({ user }: { user: User }) {
   const { t } = useTranslation()
   const errorMessage = useErrorMessage()
   const [files, setFiles] = useState<File[]>([])
+  const [garmentType, setGarmentType] = useState('')
   const [phase, setPhase] = useState<'idle' | 'reading'>('idle')
   const [error, setError] = useState('')
   const [shown, setShown] = useState<Analysis | null>(null)
@@ -81,7 +83,7 @@ export default function Scan({ user }: { user: User }) {
       const response = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'content-type': 'application/json', authorization: `Bearer ${await user.getIdToken()}` },
-        body: JSON.stringify({ images: photos.map((photo) => photo.upload) }),
+        body: JSON.stringify({ images: photos.map((photo) => photo.upload), garmentType }),
       })
       const body = await response.json().catch(() => ({}))
       if (!response.ok) throw { code: `api/${body.error}` }
@@ -201,6 +203,19 @@ export default function Scan({ user }: { user: User }) {
                 </>
               )}
             </div>
+
+            <label className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-mist">
+              {t('upload.type')}
+              <select
+                value={garmentType}
+                onChange={(e) => setGarmentType(e.target.value)}
+                disabled={busy}
+                className="border border-mist/50 bg-ink px-3 py-2 text-paper transition-colors hover:border-mist"
+              >
+                <option value="">{t('upload.type_auto')}</option>
+                {GARMENT_TYPES.map((type) => <option key={type} value={type}>{t(`garment.${type}`)}</option>)}
+              </select>
+            </label>
 
             {busy ? (
               <div role="status" className="w-full max-w-sm">

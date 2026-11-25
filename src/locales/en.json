@@ -10,7 +10,9 @@
     "clear": "Clear",
     "remove": "Remove photo {{n}}",
     "analyze": "Check this garment",
-    "new": "Check another garment"
+    "new": "Check another garment",
+    "type": "What is it?",
+    "type_auto": "Work it out from the photo"
   },
   "progress": {
     "reading": "Reading the label and checking the records…"
@@ -80,7 +82,7 @@
       "basis": "Modelled by Ecobalyse (v7.0.0) for a typical {{mass}} g garment of this type. Lower is better.",
       "country_default": "Ecobalyse does not model this country, so its default (worst case) was used for the making step.",
       "open": "Open the full simulation",
-      "unsupported_garment": "Ecobalyse does not model this type of garment.",
+      "unsupported_garment": "Ecobalyse needs to know what kind of garment this is. Pick it under the photos and check again.",
       "unsupported_fibre": "One of these fibres is not in the Ecobalyse database.",
       "no_composition": "A full composition is needed to model this garment.",
       "error": "Ecobalyse could not be reached. Scan again later."
